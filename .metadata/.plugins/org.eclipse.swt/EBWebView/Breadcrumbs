@@ -1,0 +1,38 @@
+0:58:29 Tab5 RenderProcessGone
+0:58:29 Browser5 Close Tab5 at 0
+0:58:29 Tab5 WebContentsDestroyed
+0:58:29 Microsoft.Shutdown.OnWindowClosing
+0:58:29 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+0:58:29 Widget Closed: BrowserFrame
+0:58:29 Microsoft.Shutdown.OnWindowClosing
+0:58:29 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+0:58:29 Microsoft.Browser_Removed
+0:58:36 Browser1 Close Tab1 at 0
+0:58:36 Tab1 WebContentsDestroyed
+0:58:38 Microsoft.Shutdown.OnWindowClosing
+0:58:38 Microsoft.Shutdown.OnWindowClosing_MaybeClearBrowsingDataOnExit
+0:58:38 Microsoft.Shutdown.OnWindowClosing_ClearBrowsingDataOnExitNotInProgress
+0:58:38 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+0:58:38 Widget Closed: BrowserFrame
+0:58:38 Microsoft.Browser_Removed
+0:58:38 Microsoft.Shutdown.OnWindowClosing
+0:58:38 Microsoft.Shutdown.OnWindowClosing_MaybeClearBrowsingDataOnExit
+0:58:38 Microsoft.Shutdown.OnWindowClosing_ClearBrowsingDataOnExitNotInProgress
+0:58:38 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+0:58:38 Tab2 RenderProcessGone
+0:58:38 Browser2 Close Tab2 at 0
+0:58:38 Tab2 WebContentsDestroyed
+0:58:38 Microsoft.Shutdown.OnWindowClosing
+0:58:38 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+0:58:38 Widget Closed: BrowserFrame
+0:58:38 Microsoft.Shutdown.OnWindowClosing
+0:58:38 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+0:58:40 Microsoft.Last_Browser_Removed
+0:58:54 Microsoft.Shutdown.ShutdownIfNoBrowsers
+0:58:54 Microsoft.Shutdown.SetTryingToQuit_Quitting
+0:58:54 Microsoft.Shutdown.NotifyAppTerminating
+0:58:54 Microsoft.Shutdown.OnAppExiting
+0:58:54 Microsoft.Shutdown.HandleAppExitingForPlatform_Aura
+0:58:54 Microsoft.Shutdown.HandleAppExitingForPlatform_Aura.NotificationUIManager_StartShutdown
+0:58:54 Microsoft.Shutdown.HandleAppExitingForPlatform_Aura.CloseAllSecondaryWidgets
+0:59:00 Shutdown
