@@ -28,8 +28,8 @@ public class LoginFilter implements Filter {
 		
 		boolean isPublicRes = url.contains("/css/") || url.contains("/js/"); 
 		
-		//if (userLogged || isPublicPage || isPublicRes)
+		if (userLogged || isPublicPage || isPublicRes)
 			chain.doFilter(req, res);
-		//else httpRes.sendRedirect("/facebook/login.jsp");
+		else httpRes.sendRedirect("/facebook/login.jsp");
 	}
 }
