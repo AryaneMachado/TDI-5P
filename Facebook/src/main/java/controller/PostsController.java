@@ -30,8 +30,8 @@ public class PostsController extends HttpServlet {
 		String action = req.getRequestURI();
 		System.out.println("Action GET = " + action);
 		switch (action) {
-		case "/facebook/posts":
-			loadPosts(req);
+		case "/facebook/posts": 
+			loadPosts(req); // buscando meus posts
 			req.getRequestDispatcher("posts.jsp").forward(req, resp);
 			break;
 		}
@@ -42,7 +42,7 @@ public class PostsController extends HttpServlet {
 		String action = req.getRequestURI();
 		System.out.println("Action POST = " + action);
 		switch (action) {
-		case "/facebook/posts/save": {
+		case "/facebook/posts/save": { // insere ou atualiza
 			if(req.getParameter("post_id") == "") {
 			System.out.println("entrou no create");
 			insertPost(createPost(req));

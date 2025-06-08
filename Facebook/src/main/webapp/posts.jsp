@@ -41,7 +41,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="post" items="${posts}">
+						<c:forEach var="post" items="${posts}"> <!-- percorrendo lista -->
 							<tr>
 								<th scope="row">${post.getId()}</th>
 								<td scope="row">${post.getContent()}</td>
