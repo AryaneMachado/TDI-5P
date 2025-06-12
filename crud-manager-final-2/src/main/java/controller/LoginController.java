@@ -1,13 +1,18 @@
 package controller;
 
 import java.io.IOException;
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.ModelException;
+import model.User;
 import model.dao.DAOFactory;
 import model.dao.UserDAO;
-import model.entities.User;
 
 @WebServlet("/logincontroller")
 public class LoginController extends HttpServlet {
@@ -20,7 +25,12 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 
 		UserDAO userDAO = DAOFactory.createDAO(UserDAO.class);
-		User user = userDAO.findByEmailAndPassword(email, password);
+		User user = null;
+		try {
+			user = userDAO.findByEmailAndPassword(email, password);
+		} catch (ModelException e) {
+			e.printStackTrace();
+		}
 
 		if (user != null) {
 			HttpSession session = request.getSession();

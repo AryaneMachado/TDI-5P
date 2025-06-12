@@ -13,8 +13,8 @@ public class DAOFactory {
 	static {
 	    listDAOsInterfaces.put(PostDAO.class, new MySQLPostDAO());
 	    listDAOsInterfaces.put(UserDAO.class, new MySQLUserDAO());
-	    listDAOsInterfaces.put(CompanyDAO.class, new MySQLCompanyDAO());  
-	    listDAOsInterfaces.put(RequisicaoMaterialDAO.class, new MySQLRequisicaoMaterialDAO());
+	    listDAOsInterfaces.put(CompanyDAO.class, new MySQLCompanyDAO());
+	    listDAOsInterfaces.put(CourseDAO.class, new MySQLCourseDAO());
 	}
 
 

@@ -33,7 +33,7 @@
 		    </div>
 		 
 		    <div class="col-md-3">
-		        <a href="/crud-manager/company/form" class="btn btn-danger pull-right h2"><span class="glyphicon glyphicon-plus" /></span>&nbspAdicionar Empresa</a>
+		        <a href="/crud-manager-final-2/company/form" class="btn btn-danger pull-right h2"><span class="glyphicon glyphicon-plus" /></span>&nbspAdicionar Empresa</a>
 		    </div>
      	</div>
      	

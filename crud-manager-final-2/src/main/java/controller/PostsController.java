@@ -27,13 +27,13 @@ public class PostsController extends HttpServlet {
 		String action = req.getRequestURI();
 		
 		switch (action) {
-		case "/crud-manager/post/form": {
+		case "/crud-manager-final-2/post/form": {
 			CommonsController.listUsers(req);
 			req.setAttribute("action", "insert");
 			ControllerUtil.forward(req, resp, "/form-post.jsp");
 			break;
 		}
-		case "/crud-manager/post/update": {
+		case "/crud-manager-final-2/post/update": {
 			CommonsController.listUsers(req);
 			Post p = loadPost(req);
 			req.setAttribute("post", p);
@@ -61,14 +61,14 @@ public class PostsController extends HttpServlet {
 		}
 		
 		switch (action) {
-		case "/crud-manager/post/delete":
+		case "/crud-manager-final-2/post/delete":
 			deletePost(req, resp);
 			break;
-		case "/crud-manager/post/insert": {
+		case "/crud-manager-final-2/post/insert": {
 			insertPost(req, resp);
 			break;
 		}
-		case "/crud-manager/post/update": {
+		case "/crud-manager-final-2/post/update": {
 			updatePost(req, resp);
 			break;
 		}

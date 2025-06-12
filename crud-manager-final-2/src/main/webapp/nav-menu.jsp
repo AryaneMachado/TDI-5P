@@ -21,15 +21,23 @@
 				
 			<!-- Nova classe adicionada: -->
 			
-				<li><a href="${pageContext.request.contextPath}/requisicao"><span class="glyphicon glyphicon-pushpin" /><strong>&nbspRequisições Materiais</strong></a></li>
-				<li class="dropdown">
-			        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong>Perfil</strong>
-			        <span class="caret"></span></a>
-			        <ul class="dropdown-menu">
-			          <li><a href="#"><span class="glyphicon glyphicon-cog" /></span>&nbspDados cadastrais</a></li>
-			          <li><a href="#"><span class="glyphicon glyphicon-log-out" /></span>&nbspSair</a></li>
-			        </ul>
-			    </li>
+				<li><a href="${pageContext.request.contextPath}/courses"><span class="glyphicon glyphicon-pushpin" /><strong>&nbspCursos</strong></a></li>
+
+				<c:choose>
+					<c:when test="${not empty sessionScope.loggedUser}">
+						<li class="navbar-text">Olá, ${sessionScope.loggedUser.name}
+						</li>
+						<li><a
+							href="${pageContext.request.contextPath}/logoutcontroller"> <span
+								class="glyphicon glyphicon-log-out"></span>&nbsp;Sair
+						</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${pageContext.request.contextPath}/login.jsp">
+								<span class="glyphicon glyphicon-log-in"></span>&nbsp;Login
+						</a></li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</div>
 	</div>

@@ -1,5 +1,8 @@
 package model.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,29 +126,24 @@ public class MySQLUserDAO implements UserDAO {
 	}
 	
 	@Override
-	public User findByEmailAndPassword(String email, String password) {
-		User user = null;
+	public User findByEmailAndPassword(String email, String password) throws ModelException {
+	    DBHandler db = new DBHandler();
 
-		try {
-			PreparedStatement stmt = conn.prepareStatement(
-				"SELECT * FROM users WHERE email = ? AND password = ?");
-			stmt.setString(1, email);
-			stmt.setString(2, password);
+	    String sql = "SELECT * FROM users "
+	               + "WHERE email = ? AND password = ?;";
 
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				user = new User();
-				user.setId(rs.getInt("id"));
-				user.setName(rs.getString("name"));
-				user.setEmail(rs.getString("email"));
-				user.setPassword(rs.getString("password"));
-			}
-			rs.close();
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return user;
+	    db.prepareStatement(sql);
+	    db.setString(1, email);
+	    db.setString(2, password);
+
+	    db.executeQuery();
+
+	    User u = null;
+	    if (db.next()) {
+	        u = createUser(db);
+	        u.setPassword(db.getString("password"));
+	    }
+	    return u;
 	}
 
 }

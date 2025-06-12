@@ -28,13 +28,13 @@ public class CompaniesController extends HttpServlet{
 		String action = req.getRequestURI();
 		
 		switch (action) {
-		case "/crud-manager/company/form": {
+		case "/crud-manager-final-2/company/form": {
 			CommonsController.listUsers(req);
 			req.setAttribute("action", "insert");
 			ControllerUtil.forward(req, resp, "/form-company.jsp");			
 			break;
 		}
-		case "/crud-manager/company/update": {
+		case "/crud-manager-final-2/company/update": {
 			String idStr = req.getParameter("companyId");
 			int idCompany = Integer.parseInt(idStr); 
 			
@@ -85,18 +85,18 @@ public class CompaniesController extends HttpServlet{
 		String action = req.getRequestURI();
 		
 		switch (action) {
-		case "/crud-manager/company/insert": {
+		case "/crud-manager-final-2/company/insert": {
 			insertCompany(req, resp);			
 			break;
 		}
-		case "/crud-manager/company/delete" :{
+		case "/crud-manager-final-2/company/delete" :{
 			
 			deleteCompany(req, resp);
 			
 			break;
 		}
 		
-		case "/crud-manager/company/update" :{
+		case "/crud-manager-final-2/company/update" :{
 			updateCompany(req, resp);
 			break;
 		}

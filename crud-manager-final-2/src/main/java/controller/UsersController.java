@@ -25,13 +25,13 @@ public class UsersController extends HttpServlet {
 		String action = req.getRequestURI();
 		
 		switch (action) {
-		case "/crud-manager/user/form": {
+		case "/crud-manager-final-2/user/form": {
 			listUsers(req);
 			req.setAttribute("action", "insert");
 			ControllerUtil.forward(req, resp, "/form-user.jsp");
 			break;
 		}
-		case "/crud-manager/user/update": {
+		case "/crud-manager-final-2/user/update": {
 			listUsers(req);
 			User user = loadUser(req);
 			req.setAttribute("user", user);
@@ -58,14 +58,14 @@ public class UsersController extends HttpServlet {
 		}
 		
 		switch (action) {
-		case "/crud-manager/user/delete":
+		case "/crud-manager-final-2/user/delete":
 			deleteUser(req, resp);
 			break;	
-		case "/crud-manager/user/insert": {
+		case "/crud-manager-final-2/user/insert": {
 			insertUser(req, resp);
 			break;
 		}
-		case "/crud-manager/user/update": {
+		case "/crud-manager-final-2/user/update": {
 			updateUser(req, resp);
 			break;
 		}
