@@ -42,6 +42,16 @@
 							   oninput="setCustomValidity('')"
 							   value="${user.getEmail()}">
 					</div>
+					
+					<div class="form-group col-md-4">
+					<label for="mail">Senha</label>
+						<input type="" class="form-control" id="password" name="password" 
+							   autofocus="autofocus" placeholder="Senha do usuário" 
+							   required oninvalid="this.setCustomValidity('Por favor, informe a senha do usuário.')"
+							   oninput="setCustomValidity('')"
+							   value="${user.getPassword()}">
+					</div>
+					
 				</div>
 				<hr />
 				<div id="actions" class="row pull-right">

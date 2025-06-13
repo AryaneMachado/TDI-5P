@@ -73,7 +73,7 @@
                             oninvalid="this.setCustomValidity('Por favor, selecione um usuário.')"
                             oninput="setCustomValidity('')">
                         <option value="" ${empty course ? 'selected' : ''}>Selecione um usuário</option>
-                        <c:forEach var="u" items="${users}">
+                        <c:forEach var="u" items="${users}"> <!-- carregando infos users -->
                             <option value="${u.id}"
                                 ${not empty course && course.user.id == u.id ? 'selected' : ''}>
                                 ${u.name}

@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import model.Course;
 import model.ModelException;
 import model.User;
@@ -18,12 +19,13 @@ import model.dao.DAOFactory;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = {
-    "/courses", 
-    "/course/form", 
-    "/course/delete", 
-    "/course/insert", 
-    "/course/update"
+    "/courses",              
+    "/course/form",         
+    "/course/delete",        
+    "/course/insert",        
+    "/course/update"         
 })
+
 public class CoursesController extends HttpServlet {
 
     @Override
@@ -32,23 +34,26 @@ public class CoursesController extends HttpServlet {
         String action = req.getRequestURI();
 
         switch (action) {
+            
             case "/crud-manager-final-2/course/form": {
-                CommonsController.listUsers(req);
+                CommonsController.listUsers(req); // popula lista
                 req.setAttribute("action", "insert");
-                ControllerUtil.forward(req, resp, "/form-course.jsp");
+                ControllerUtil.forward(req, resp, "/form-course.jsp"); // encaminha
                 break;
             }
+
             case "/crud-manager-final-2/course/update": {
                 CommonsController.listUsers(req);
-                Course c = loadCourse(req);
+                Course c = loadCourse(req); // carrega
                 req.setAttribute("course", c);
                 req.setAttribute("action", "update");
                 ControllerUtil.forward(req, resp, "/form-course.jsp");
                 break;
             }
+
             default: {
                 listCourses(req);
-                ControllerUtil.transferSessionMessagesToRequest(req);
+                ControllerUtil.transferSessionMessagesToRequest(req); // mensagens da sessão
                 ControllerUtil.forward(req, resp, "/courses.jsp");
             }
         }
@@ -73,6 +78,7 @@ public class CoursesController extends HttpServlet {
                 System.err.println("URL inválida: " + action);
         }
 
+        // para qualquer ação -> retorna lista
         ControllerUtil.redirect(resp, req.getContextPath() + "/courses");
     }
 
@@ -82,7 +88,7 @@ public class CoursesController extends HttpServlet {
 
         CourseDAO dao = DAOFactory.createDAO(CourseDAO.class);
         try {
-            Course c = dao.findById(courseId);
+            Course c = dao.findById(courseId); // busca no bd
             if (c == null) {
                 throw new ModelException("Curso não encontrado para alteração");
             }
@@ -96,6 +102,9 @@ public class CoursesController extends HttpServlet {
 
     private void insertCourse(HttpServletRequest req, HttpServletResponse resp) {
         try {
+        	
+            // Lê parâmetros
+        	
             String modality = req.getParameter("modality");
             String name     = req.getParameter("name");
             Date startDate  = new SimpleDateFormat("yyyy-MM-dd")
@@ -109,7 +118,7 @@ public class CoursesController extends HttpServlet {
             c.setName(name);
             c.setStartDate(startDate);
             c.setEndDate(endDate);
-            c.setUser(new User(userId));
+            c.setUser(new User(userId)); // relaciona
 
             CourseDAO dao = DAOFactory.createDAO(CourseDAO.class);
             boolean ok = dao.save(c);
@@ -129,7 +138,7 @@ public class CoursesController extends HttpServlet {
 
     private void updateCourse(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            Course c = loadCourse(req);
+            Course c = loadCourse(req); // carregamento
             if (c == null) return;
 
             String modality = req.getParameter("modality");
@@ -140,6 +149,7 @@ public class CoursesController extends HttpServlet {
                                   .parse(req.getParameter("endDate"));
             int userId      = Integer.parseInt(req.getParameter("user"));
 
+            // Atualiza o curso
             c.setModality(modality);
             c.setName(name);
             c.setStartDate(startDate);
@@ -147,7 +157,7 @@ public class CoursesController extends HttpServlet {
             c.setUser(new User(userId));
 
             CourseDAO dao = DAOFactory.createDAO(CourseDAO.class);
-            boolean ok = dao.update(c);
+            boolean ok = dao.update(c); // atualiza no bd
             if (ok) {
                 ControllerUtil.sucessMessage(req, 
                   "Curso '" + c.getName() + "' atualizado com sucesso.");
@@ -164,11 +174,11 @@ public class CoursesController extends HttpServlet {
 
     private void deleteCourse(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            Course c = loadCourse(req);
+            Course c = loadCourse(req); // carregamento
             if (c == null) return;
 
             CourseDAO dao = DAOFactory.createDAO(CourseDAO.class);
-            boolean ok = dao.delete(c);
+            boolean ok = dao.delete(c); // atualiza no bd
             if (ok) {
                 ControllerUtil.sucessMessage(req, 
                   "Curso '" + c.getName() + "' deletado com sucesso.");
@@ -182,12 +192,12 @@ public class CoursesController extends HttpServlet {
               "Erro ao deletar curso: " + e.getMessage());
         }
     }
-
+    
     private void listCourses(HttpServletRequest req) {
         CourseDAO dao = DAOFactory.createDAO(CourseDAO.class);
         try {
-            List<Course> list = dao.listAll();
-            req.setAttribute("courses", list);
+            List<Course> list = dao.listAll(); // busca
+            req.setAttribute("courses", list); // add na req
         } catch (ModelException e) {
             e.printStackTrace();
             ControllerUtil.errorMessage(req, 

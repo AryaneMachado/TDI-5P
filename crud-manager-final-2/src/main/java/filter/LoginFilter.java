@@ -7,20 +7,30 @@ import jakarta.servlet.http.*;
 
 @WebFilter("/*")
 public class LoginFilter implements Filter {
+
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
+
         HttpServletRequest  request  = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
+
+        // obtém caminho
+        
         String uri = request.getRequestURI();
+
+        // confere se página/ação pública
         
-        boolean isLoginPage     = uri.endsWith("/login.jsp");
-        boolean isLoginAction   = uri.endsWith("/logincontroller");
-        boolean isStaticResource= uri.contains("/css/") || uri.contains("/js/") || uri.contains("/images/");
-        
+        boolean isLoginPage      = uri.endsWith("/login.jsp");      
+        boolean isLoginAction    = uri.endsWith("/logincontroller");
+        boolean isStaticResource = uri.contains("/css/") || uri.contains("/js/") || uri.contains("/images/");
+
         HttpSession session = request.getSession(false);
-        boolean loggedIn = (session != null && session.getAttribute("loggedUser") != null);
+
+        // há login?
         
+        boolean loggedIn = (session != null && session.getAttribute("loggedUser") != null);
+
         if (loggedIn || isLoginPage || isLoginAction || isStaticResource) {
             chain.doFilter(req, res);
         } else {

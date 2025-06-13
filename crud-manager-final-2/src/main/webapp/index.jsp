@@ -32,7 +32,7 @@
 			    </div>
 			 
 			    <div class="col-md-3">
-			        <a href="/crud-manager/post/form" class="btn btn-danger pull-right h2"><span class="glyphicon glyphicon-plus" /></span>&nbspAdicionar Post</a>
+			        <a href="/crud-manager-final-2/post/form" class="btn btn-danger pull-right h2"><span class="glyphicon glyphicon-plus" /></span>&nbspAdicionar Post</a>
 			    </div>
 	     	</div>
 	 

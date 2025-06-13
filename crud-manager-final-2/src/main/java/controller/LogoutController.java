@@ -15,10 +15,15 @@ public class LogoutController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		// obter sessão atual
+		
 		HttpSession session = request.getSession(false);
+
 		if (session != null) {
-			session.invalidate();
+			session.invalidate(); // remove dados
 		}
+
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}
 }
